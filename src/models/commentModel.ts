@@ -30,4 +30,4 @@ const commentSchema = new Schema<commentT>(
   }
 );
 
-export const Comment = model<commentT>("Comment", commentSchema);
+export default model<commentT>("Comment", commentSchema);

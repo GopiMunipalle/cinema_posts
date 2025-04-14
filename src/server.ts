@@ -3,8 +3,12 @@ import { config } from "dotenv";
 config();
 import { connectDB } from "./config/dbConfig";
 
+import postRoute from "./routes/postRoute";
+
 const app = express();
 app.use(express.json());
+
+app.use("/api/posts", postRoute);
 
 connectDB()
   .then(() => {
