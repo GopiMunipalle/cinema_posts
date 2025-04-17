@@ -4,11 +4,15 @@ config();
 import { connectDB } from "./config/dbConfig";
 
 import postRoute from "./routes/postRoute";
+import commentRoutes from "./routes/commentRoutes";
+import subCommentRoutes from "./routes/subCommentRoutes";
 
 const app = express();
 app.use(express.json());
 
 app.use("/api/posts", postRoute);
+app.use("/api/comments", commentRoutes);
+app.use("/api/subcomments", subCommentRoutes);
 
 connectDB()
   .then(() => {

@@ -6,6 +6,7 @@ export interface SubCommentT {
   userId: number;
   replies: Types.ObjectId[];
   depth: number;
+  parentSubCommentId?: Types.ObjectId;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -36,6 +37,11 @@ const subCommentSchema = new Schema<SubCommentT>(
       required: true,
       default: 0,
     },
+    parentSubCommentId: {
+      type: Schema.Types.ObjectId,
+      ref: "SubComment",
+      default: null,
+    },
   },
   {
     timestamps: true,
@@ -43,4 +49,4 @@ const subCommentSchema = new Schema<SubCommentT>(
   }
 );
 
-export const SubComment = model<SubCommentT>("SubComment", subCommentSchema);
+export default model<SubCommentT>("SubComment", subCommentSchema);

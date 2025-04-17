@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 export interface postsT {
+  userId: number;
   title: string;
   message: string;
   creator: string;
@@ -14,6 +15,10 @@ export interface postsT {
 
 const postSchema = new mongoose.Schema<postsT>(
   {
+    userId: {
+      type: Number,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
